@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Luna Beauty Nail Studio — Wellington</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Raleway:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#FAF6F1;--paper:#F4EDE3;--blush:#EDE0D4;
+  --rg:#B87D5A;--rg-lt:#D4A882;--rg-xs:#EDD9C8;
+  --bark:#4A2E1E;--text:#3A2416;--muted:#8C6E5A;--stone:#C4AFA0;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--text);font-family:'Raleway',sans-serif;font-weight:300;font-size:15px;line-height:1.75;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;transition:all 0.4s}
+nav.scrolled{background:rgba(250,246,241,0.97);backdrop-filter:blur(16px);padding:13px 56px;border-bottom:1px solid var(--rg-xs);box-shadow:0 2px 24px rgba(74,46,30,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:36px;width:36px;object-fit:contain;border-radius:50%}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bark)}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:400;transition:color 0.25s}
+.nav-links a:hover{color:var(--rg)}
+.nav-book{padding:9px 20px;border:1px solid var(--rg);color:var(--rg)!important;white-space:nowrap}
+.nav-book:hover{background:var(--rg)!important;color:var(--white)!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:80px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:60px 56px;position:relative;z-index:1}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--ivory) 0%,transparent 35%);pointer-events:none}
+.hero-eyebrow{font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--rg);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--rg-lt)}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,88px);font-weight:400;line-height:0.95;color:var(--bark);margin-bottom:6px}
+h1.hero-title em{font-style:italic;color:var(--rg);display:block}
+.hero-sub{font-weight:200;font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:var(--stone);margin:18px 0 28px;display:block}
+.hero-ornament{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.hero-ornament-line{width:44px;height:1px;background:linear-gradient(to right,var(--rg-lt),transparent)}
+.hero-ornament-diamond{width:5px;height:5px;border:1px solid var(--rg);transform:rotate(45deg);animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.4;transform:rotate(45deg) scale(1)}50%{opacity:1;transform:rotate(45deg) scale(1.4)}}
+.hero-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:40px;max-width:360px}
+.btn-group{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-block;padding:14px 36px;background:var(--bark);color:var(--ivory);text-decoration:none;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;font-weight:400;position:relative;overflow:hidden;transition:box-shadow 0.3s}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--rg);transform:translateX(-101%);transition:transform 0.38s cubic-bezier(0.4,0,0.2,1)}
+.btn-primary:hover::before{transform:translateX(0)}
+.btn-primary:hover{box-shadow:0 8px 24px rgba(184,125,90,0.35)}
+.btn-primary span{position:relative;z-index:1}
+.btn-outline{display:inline-block;padding:13px 36px;border:1px solid var(--stone);color:var(--muted);text-decoration:none;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;font-weight:400;transition:all 0.3s}
+.btn-outline:hover{border-color:var(--rg);color:var(--rg)}
+.scroll-hint{position:absolute;bottom:28px;left:56px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;z-index:2}
+.scroll-label{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--stone)}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--stone),transparent);animation:dropLine 2.4s ease-in-out infinite}
+@keyframes dropLine{0%{transform:scaleY(0);transform-origin:top;opacity:0}45%{transform:scaleY(1);transform-origin:top;opacity:1}80%{transform:scaleY(1);transform-origin:bottom;opacity:1}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
+
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--rg-xs);border-bottom:1px solid var(--rg-xs);padding:14px 0;background:var(--paper)}
+.marquee-track{display:inline-flex;animation:marqueeRun 38s linear infinite;white-space:nowrap}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:inline-flex;align-items:center;gap:22px;padding:0 26px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;font-weight:300;color:var(--muted);cursor:default;transition:color 0.2s}
+.marquee-item:hover{color:var(--rg)}
+.marquee-dot{width:3px;height:3px;border-radius:50%;background:var(--rg-lt);opacity:0.7;flex-shrink:0}
+@keyframes marqueeRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.sect{padding:96px 56px}
+.sect-inner{max-width:1100px;margin:0 auto}
+.eyebrow{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--rg);display:block;margin-bottom:14px}
+.display-h{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:var(--bark);line-height:1.15;margin-bottom:14px}
+.display-h em{font-style:italic;color:var(--rg)}
+.ornament-rule{display:flex;align-items:center;gap:10px;margin-bottom:48px}
+.ornament-rule::after{content:'';width:44px;height:1px;background:var(--rg-lt);opacity:0.7}
+.ornament-diamond{width:4px;height:4px;border:1px solid var(--rg-lt);transform:rotate(45deg)}
+
+/* GALLERY */
+.gallery-sect{padding:0}
+.gallery-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:270px 270px;gap:3px;background:var(--rg-xs)}
+.g-cell{overflow:hidden;position:relative;cursor:pointer}
+.g-cell.tall{grid-row:span 2}
+.g-cell img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1)}
+.g-cell:hover img{transform:scale(1.07)}
+.g-cell-label{position:absolute;bottom:0;left:0;right:0;padding:18px 14px 12px;background:linear-gradient(transparent,rgba(74,46,30,0.55));color:rgba(250,246,241,0.92);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;transform:translateY(100%);transition:transform 0.32s}
+.g-cell:hover .g-cell-label{transform:translateY(0)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(20,10,5,0.93);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(10px)}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:92vw;max-height:88vh;object-fit:contain;transform:scale(0.9);transition:transform 0.32s cubic-bezier(0.4,0,0.2,1)}
+.lightbox.open img{transform:scale(1)}
+.lightbox-close{position:absolute;top:20px;right:24px;font-size:26px;color:var(--stone);cursor:pointer;line-height:1}
+.lightbox-close:hover{color:var(--white)}
+.lightbox-caption{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone)}
+
+/* ABOUT */
+.about-sect{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img-main{width:100%;border-radius:2px;display:block;box-shadow:0 20px 56px rgba(74,46,30,0.14);transition:transform 0.5s}
+.about-img-wrap:hover .about-img-main{transform:translateY(-4px)}
+.about-img-accent{position:absolute;bottom:-18px;right:-18px;width:44%;border-radius:2px;border:4px solid var(--paper);box-shadow:0 10px 28px rgba(74,46,30,0.16)}
+.about-text p{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:20px}
+.about-text p strong{font-weight:300;color:var(--bark)}
+.about-stats{display:flex;border-top:1px solid var(--rg-xs);margin-top:40px;padding-top:32px}
+.about-stat{flex:1;text-align:center;padding:0 14px;border-right:1px solid var(--rg-xs);transition:transform 0.3s}
+.about-stat:last-child{border-right:none}
+.about-stat:hover{transform:translateY(-3px)}
+.stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--rg);display:block;line-height:1;margin-bottom:6px}
+.stat-lbl{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone)}
+
+/* SERVICES */
+.services-sect{background:var(--ivory)}
+.services-tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rg-xs);margin-bottom:48px}
+.tab-btn{background:none;border:none;cursor:pointer;font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);font-weight:400;padding:11px 18px;border-bottom:1px solid transparent;margin-bottom:-1px;transition:all 0.22s}
+.tab-btn:hover{color:var(--rg)}
+.tab-btn.active{color:var(--bark);border-bottom-color:var(--rg)}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeUp 0.28s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.svc-list{display:flex;flex-direction:column}
+.svc-row{display:flex;justify-content:space-between;align-items:center;padding:19px 0;border-bottom:1px solid var(--rg-xs);gap:16px;transition:padding-left 0.28s}
+.svc-row:first-child{border-top:1px solid var(--rg-xs)}
+.svc-row:hover{padding-left:14px}
+.svc-name{font-size:14px;color:var(--text);font-weight:300}
+.svc-meta{font-size:11px;color:var(--stone);margin-top:2px}
+.svc-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--rg);flex-shrink:0;min-width:52px;text-align:right}
+
+/* REVIEWS */
+.reviews-sect{background:var(--bark);padding:96px 56px}
+.reviews-sect .eyebrow{color:var(--rg-lt)}
+.reviews-sect .display-h{color:var(--ivory)}
+.reviews-sect .ornament-rule::after{background:var(--rg-lt);opacity:0.4}
+.reviews-sect .ornament-diamond{border-color:var(--rg-lt);opacity:0.4}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:rgba(255,255,255,0.06)}
+.review-card{background:var(--bark);padding:40px 32px;position:relative;transition:background 0.3s,transform 0.3s}
+.review-card:hover{background:#5A3824;transform:translateY(-4px)}
+.review-card::before{content:'\201c';font-family:'Playfair Display',serif;font-size:68px;color:var(--rg-lt);opacity:0.18;position:absolute;top:18px;left:24px;line-height:1;pointer-events:none}
+.review-stars{color:var(--rg-lt);font-size:11px;letter-spacing:4px;margin-bottom:18px}
+.review-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:300;color:rgba(250,246,241,0.88);line-height:1.75;margin-bottom:22px}
+.review-author{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);display:flex;align-items:center;gap:10px}
+.review-author::before{content:'';width:16px;height:1px;background:var(--rg-lt);opacity:0.5}
+
+/* BOOK */
+.book-sect{background:var(--paper);padding:96px 56px}
+.book-grid{display:grid;grid-template-columns:1fr auto;gap:72px;align-items:center;max-width:1100px;margin:0 auto}
+.book-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:300;color:var(--muted);margin-bottom:36px;line-height:1.8;max-width:440px}
+.qr-block{display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0}
+.qr-frame{padding:18px;background:var(--ivory);border:1px solid var(--rg-xs);box-shadow:0 8px 28px rgba(74,46,30,0.1);transition:transform 0.3s}
+.qr-frame:hover{transform:scale(1.03)}
+.qr-frame img{display:block;width:160px;height:160px}
+.qr-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone)}
+
+/* VISIT */
+.visit-sect{background:var(--ivory)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.info-blk{margin-bottom:36px}
+.info-lbl{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--rg);display:block;margin-bottom:11px}
+.info-blk p,.info-blk a{font-size:15px;color:var(--text);line-height:1.85;text-decoration:none;font-weight:300;transition:color 0.2s}
+.info-blk a:hover{color:var(--rg)}
+.hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--rg-xs);font-size:14px}
+.hours-row:first-child{border-top:1px solid var(--rg-xs)}
+.hours-day{color:var(--muted)}
+.info-card-img{width:100%;border-radius:3px;box-shadow:0 14px 44px rgba(74,46,30,0.12)}
+
+/* LOYALTY */
+.loyalty-sect{background:var(--paper);padding:96px 56px;text-align:center}
+.loyalty-card-wrap{max-width:520px;margin:36px auto 0}
+.loyalty-card-wrap img{width:100%;border-radius:6px;box-shadow:0 20px 56px rgba(74,46,30,0.16);transition:transform 0.4s,box-shadow 0.4s}
+.loyalty-card-wrap:hover img{transform:translateY(-6px) rotate(-0.4deg);box-shadow:0 32px 72px rgba(74,46,30,0.22)}
+
+/* FOOTER */
+footer{background:var(--bark);padding:44px 56px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo img{height:30px;width:30px;object-fit:contain;border-radius:50%;opacity:0.9}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ivory)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--rg-lt)}
+.footer-copy{font-size:11px;color:rgba(196,175,160,0.4)}
+
+/* SPARKLE */
+.sparkle{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;background:var(--rg-lt);transform:translate(-50%,-50%);animation:sparkleFade 0.6s ease forwards}
+@keyframes sparkleFade{0%{opacity:0.8;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:12px 16px}
+  nav.scrolled{padding:10px 16px}
+  .nav-logo-text{display:none}
+  .nav-links{gap:10px}
+  .nav-links a{font-size:10px;letter-spacing:0.1em}
+  .nav-book{padding:7px 12px!important}
+  .hero{display:flex;flex-direction:column;padding-top:0;min-height:auto}
+  .hero-right{order:0;height:56vw;width:100%;flex-shrink:0}
+  .hero-right-overlay{background:linear-gradient(to top,var(--ivory) 0%,transparent 50%)}
+  .hero-left{order:1;padding:28px 20px 52px;justify-content:flex-start}
+  .scroll-hint{display:none}
+  .sect{padding:60px 20px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .about-img-accent{display:none}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,44vw)}
+  .g-cell.tall{grid-row:span 1}
+  .reviews-sect{padding:60px 20px}
+  .reviews-grid{grid-template-columns:1fr;gap:3px}
+  .book-sect{padding:60px 20px}
+  .book-grid{grid-template-columns:1fr;gap:40px}
+  .qr-block{margin:0 auto}
+  .visit-grid{grid-template-columns:1fr;gap:36px}
+  .loyalty-sect{padding:60px 20px}
+  footer{padding:28px 20px}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  h1.hero-title{font-size:44px}
+  .tab-btn{padding:9px 10px;font-size:9px}
+  .btn-group{flex-direction:column;align-items:flex-start}
+  .about-stats{flex-direction:column;gap:18px}
+  .about-stat{border-right:none;border-bottom:1px solid var(--rg-xs);padding-bottom:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .marquee-track,.scroll-line{animation:none!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <img src="https://i.imgur.com/ggjaMrP.png" alt="Luna Beauty"/>
+    <span class="nav-logo-text">Luna Beauty</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="https://www.fresha.com/zh/a/luna-beauty-nail-stidio-wellington-62-a-97-taranaki-street-etnc9rm0/all-offer?menu=true&share=true&pId=2815167" target="_blank" rel="noopener" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-right">
+    <img src="https://i.imgur.com/4BBRdU7.jpeg" alt="Nail art by Luna Beauty" loading="eager"/>
+    <div class="hero-right-overlay"></div>
+  </div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Wellington · Nail Studio</div>
+    <h1 class="hero-title">Luna<em>Beauty</em></h1>
+    <span class="hero-sub">Nail &amp; Beauty Studio · Te Aro</span>
+    <div class="hero-ornament">
+      <div class="hero-ornament-line"></div>
+      <div class="hero-ornament-diamond"></div>
+    </div>
+    <p class="hero-desc">Meticulous craft and genuine care, in the heart of Wellington.</p>
+    <div class="btn-group">
+      <a href="https://www.fresha.com/zh/a/luna-beauty-nail-stidio-wellington-62-a-97-taranaki-street-etnc9rm0/all-offer?menu=true&share=true&pId=2815167" target="_blank" rel="noopener" class="btn-primary"><span>Book an Appointment</span></a>
+      <a href="#gallery" class="btn-outline">View Our Work</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span class="scroll-label">Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Manicure<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Pedicure<span class="marquee-dot"></span></span>
+    <span class="marquee-item">BIAB Extensions<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Cat Eye Gel<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Nail Art<span class="marquee-dot"></span></span>
+    <span class="marquee-item">French Tips<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Waxing<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Lash Tinting<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Brow Tinting<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ombré<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Chrome<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Kids Nails<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Manicure<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Pedicure<span class="marquee-dot"></span></span>
+    <span class="marquee-item">BIAB Extensions<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Cat Eye Gel<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Nail Art<span class="marquee-dot"></span></span>
+    <span class="marquee-item">French Tips<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Waxing<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Lash Tinting<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Brow Tinting<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ombré<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Chrome<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Kids Nails<span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<div class="gallery-sect" id="gallery">
+  <div class="gallery-grid">
+    <div class="g-cell tall" onclick="openLightbox('https://i.imgur.com/4BBRdU7.jpeg','3D Floral Art')">
+      <img src="https://i.imgur.com/4BBRdU7.jpeg" alt="3D floral nail art" loading="lazy"/>
+      <div class="g-cell-label">3D Floral Art</div>
+    </div>
+    <div class="g-cell" onclick="openLightbox('https://i.imgur.com/RL4iTso.jpeg','Bow Nail Art')">
+      <img src="https://i.imgur.com/RL4iTso.jpeg" alt="Bow nail art" loading="lazy"/>
+      <div class="g-cell-label">Bow Nail Art</div>
+    </div>
+    <div class="g-cell" onclick="openLightbox('https://i.imgur.com/GMlJxnx.jpeg','Crystal Stiletto')">
+      <img src="https://i.imgur.com/GMlJxnx.jpeg" alt="White stiletto nails" loading="lazy"/>
+      <div class="g-cell-label">Crystal Stiletto</div>
+    </div>
+    <div class="g-cell" onclick="openLightbox('https://i.imgur.com/Hg7LmJD.jpeg','Floral French Tip')">
+      <img src="https://i.imgur.com/Hg7LmJD.jpeg" alt="Floral french tip" loading="lazy"/>
+      <div class="g-cell-label">Floral French Tip</div>
+    </div>
+    <div class="g-cell" onclick="openLightbox('https://i.imgur.com/fSteeU8.jpeg','Pink Ombré Gel')">
+      <img src="https://i.imgur.com/fSteeU8.jpeg" alt="Pink ombre gel" loading="lazy"/>
+      <div class="g-cell-label">Pink Ombré Gel</div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
+  <img id="lightbox-img" src="" alt=""/>
+  <span class="lightbox-caption" id="lightbox-caption"></span>
+</div>
+
+<section class="sect about-sect reveal" id="about">
+  <div class="sect-inner">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img class="about-img-main" src="https://i.imgur.com/RL4iTso.jpeg" alt="Nail art" loading="lazy"/>
+        <img class="about-img-accent" src="https://i.imgur.com/fSteeU8.jpeg" alt="Nail detail" loading="lazy"/>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow">Our Studio</span>
+        <h2 class="display-h">Thoughtful beauty,<br><em>every time</em></h2>
+        <div class="ornament-rule"><div class="ornament-diamond"></div></div>
+        <p>Luna Beauty is a <strong>boutique nail and beauty studio</strong> at 62A/97 Taranaki Street, Wellington. We believe great nails start with genuine attention — to your hands, your preferences, and your time.</p>
+        <p>From classic manicures to BIAB builder gel, precision waxing to lash and brow tinting: every service delivered with care.</p>
+        <div class="about-stats">
+          <div class="about-stat reveal d1"><span class="stat-num" data-target="5.0">0</span><span class="stat-lbl">Google Rating</span></div>
+          <div class="about-stat reveal d2"><span class="stat-num" data-target="15">0</span><span class="stat-lbl">Services</span></div>
+          <div class="about-stat reveal d3"><span class="stat-num" data-target="7">0</span><span class="stat-lbl">Days Open</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect services-sect reveal" id="services">
+  <div class="sect-inner">
+    <span class="eyebrow">What We Offer</span>
+    <h2 class="display-h">Services &amp; <em>Pricing</em></h2>
+    <div class="ornament-rule"><div class="ornament-diamond"></div></div>
+    <div class="services-tabs">
+      <button class="tab-btn active" onclick="showTab('mani',this)">Manicure</button>
+      <button class="tab-btn" onclick="showTab('pedi',this)">Pedicure</button>
+      <button class="tab-btn" onclick="showTab('combo',this)">Combo</button>
+      <button class="tab-btn" onclick="showTab('enhance',this)">Enhancement</button>
+      <button class="tab-btn" onclick="showTab('art',this)">Nail Art</button>
+      <button class="tab-btn" onclick="showTab('gel',this)">Gel Services</button>
+      <button class="tab-btn" onclick="showTab('wax',this)">Waxing</button>
+      <button class="tab-btn" onclick="showTab('tint',this)">Tinting</button>
+    </div>
+    <div id="tab-mani" class="tab-panel active"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">Full manicure with normal polish</div></div><div class="svc-price">$35</div></div>
+      <div class="svc-row"><div><div class="svc-name">Full manicure with gel</div></div><div class="svc-price">$55</div></div>
+      <div class="svc-row"><div><div class="svc-name">Luxury manicure with normal polish</div></div><div class="svc-price">$45</div></div>
+      <div class="svc-row"><div><div class="svc-name">Luxury manicure with gel</div></div><div class="svc-price">$65</div></div>
+      <div class="svc-row"><div><div class="svc-name">Express manicure with normal polish</div></div><div class="svc-price">$25</div></div>
+      <div class="svc-row"><div><div class="svc-name">Express manicure with gel</div></div><div class="svc-price">$45</div></div>
+    </div></div>
+    <div id="tab-pedi" class="tab-panel"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">Full pedicure with normal polish</div></div><div class="svc-price">$50</div></div>
+      <div class="svc-row"><div><div class="svc-name">Full pedicure with gel</div></div><div class="svc-price">$60</div></div>
+      <div class="svc-row"><div><div class="svc-name">Deluxe pedicure with normal polish</div></div><div class="svc-price">$60</div></div>
+      <div class="svc-row"><div><div class="svc-name">Deluxe pedicure with gel</div></div><div class="svc-price">$70</div></div>
+      <div class="svc-row"><div><div class="svc-name">Express pedicure with normal polish</div></div><div class="svc-price">$30</div></div>
+      <div class="svc-row"><div><div class="svc-name">Express pedicure with gel</div></div><div class="svc-price">$50</div></div>
+    </div></div>
+    <div id="tab-combo" class="tab-panel"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">Full manicure &amp; pedicure with polish</div></div><div class="svc-price">$80</div></div>
+      <div class="svc-row"><div><div class="svc-name">Full manicure &amp; pedicure with gel</div></div><div class="svc-price">$110</div></div>
+    </div></div>
+    <div id="tab-enhance" class="tab-panel"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">Builder gel on natural nails (BIAB)</div><div class="svc-meta">40 mins</div></div><div class="svc-price">$62</div></div>
+      <div class="svc-row"><div><div class="svc-name">Full set of BIAB extensions</div><div class="svc-meta">1 hr</div></div><div class="svc-price">$85</div></div>
+      <div class="svc-row"><div><div class="svc-name">Infill builder gel</div><div class="svc-meta">1 hr</div></div><div class="svc-price">$70</div></div>
+    </div></div>
+    <div id="tab-art" class="tab-panel"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">French Tips</div></div><div class="svc-price">$15</div></div>
+      <div class="svc-row"><div><div class="svc-name">Cat Eye Effect</div></div><div class="svc-price">$15</div></div>
+      <div class="svc-row"><div><div class="svc-name">Ombré</div></div><div class="svc-price">$25</div></div>
+      <div class="svc-row"><div><div class="svc-name">Chrome</div></div><div class="svc-price">$15</div></div>
+      <div class="svc-row"><div><div class="svc-name">Sticker</div></div><div class="svc-price">$2</div></div>
+      <div class="svc-row"><div><div class="svc-name">Natural Nail Fix</div></div><div class="svc-price">$5</div></div>
+      <div class="svc-row"><div><div class="svc-name">Extension Nail Fix</div></div><div class="svc-price">$10</div></div>
+      <div class="svc-row"><div><div class="svc-name">Kids Nail Polish</div></div><div class="svc-price">$15</div></div>
+    </div></div>
+    <div id="tab-gel" class="tab-panel"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">Gel removal (add-on)</div></div><div class="svc-price">$5</div></div>
+      <div class="svc-row"><div><div class="svc-name">Gel removal and tidy up</div></div><div class="svc-price">$20</div></div>
+      <div class="svc-row"><div><div class="svc-name">Builder gel removal and tidy up</div></div><div class="svc-price">$30</div></div>
+    </div></div>
+    <div id="tab-wax" class="tab-panel"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">Eyebrow Wax</div><div class="svc-meta">13 mins</div></div><div class="svc-price">$20</div></div>
+      <div class="svc-row"><div><div class="svc-name">Upper Lip Wax</div><div class="svc-meta">10 mins</div></div><div class="svc-price">$15</div></div>
+      <div class="svc-row"><div><div class="svc-name">Chin Wax</div><div class="svc-meta">10 mins</div></div><div class="svc-price">$20</div></div>
+      <div class="svc-row"><div><div class="svc-name">Underarms Wax</div><div class="svc-meta">20 mins</div></div><div class="svc-price">$30</div></div>
+    </div></div>
+    <div id="tab-tint" class="tab-panel"><div class="svc-list">
+      <div class="svc-row"><div><div class="svc-name">Eyebrow Tint</div><div class="svc-meta">10 mins</div></div><div class="svc-price">$25</div></div>
+      <div class="svc-row"><div><div class="svc-name">Lash Tint</div><div class="svc-meta">15 mins</div></div><div class="svc-price">$25</div></div>
+      <div class="svc-row"><div><div class="svc-name">Eyebrow Tint &amp; Wax</div><div class="svc-meta">20 mins</div></div><div class="svc-price">$40</div></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="reviews-sect reveal" id="reviews">
+  <div class="sect-inner">
+    <span class="eyebrow">Google Reviews · 5.0</span>
+    <h2 class="display-h">What clients <em>say</em></h2>
+    <div class="ornament-rule"><div class="ornament-diamond"></div></div>
+    <div class="reviews-grid">
+      <div class="review-card reveal d1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I haven't had a gel manicure that looks this good in a very long time. Incredible attention to detail — and a great selection of cat-eye colours."</p>
+        <span class="review-author">Google Review</span>
+      </div>
+      <div class="review-card reveal d2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Amy was amazing — incredibly detailed and patient. My nails turned out beautiful. The owner was so kind and lovely."</p>
+        <span class="review-author">Google Review</span>
+      </div>
+      <div class="review-card reveal d3">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Amazing service and outstanding nails. The owner is super talented and friendly — she will not disappoint."</p>
+        <span class="review-author">Google Review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book-sect reveal" id="book">
+  <div class="book-grid">
+    <div class="book-left">
+      <span class="eyebrow">Ready to visit?</span>
+      <h2 class="display-h">Book your <em>appointment</em></h2>
+      <p class="book-desc">Secure your visit in seconds — scan the QR code or book online.</p>
+      <a href="https://www.fresha.com/zh/a/luna-beauty-nail-stidio-wellington-62-a-97-taranaki-street-etnc9rm0/all-offer?menu=true&share=true&pId=2815167" target="_blank" rel="noopener" class="btn-primary"><span>Book via Fresha</span></a>
+    </div>
+    <div class="qr-block">
+      <div class="qr-frame">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&color=4A2E1E&bgcolor=FAF6F1&data=https%3A%2F%2Fwww.fresha.com%2Fzh%2Fa%2Fluna-beauty-nail-stidio-wellington-62-a-97-taranaki-street-etnc9rm0%2Fall-offer%3Fmenu%3Dtrue%26share%3Dtrue%26pId%3D2815167" alt="QR code" loading="lazy"/>
+      </div>
+      <span class="qr-label">Scan to Book</span>
+    </div>
+  </div>
+</section>
+
+<section class="sect visit-sect reveal" id="visit">
+  <div class="sect-inner">
+    <div class="visit-grid">
+      <div>
+        <span class="eyebrow">Find Us</span>
+        <h2 class="display-h">Visit the <em>studio</em></h2>
+        <div class="ornament-rule"><div class="ornament-diamond"></div></div>
+        <div class="info-blk">
+          <span class="info-lbl">Address</span>
+          <p>62A/97 Taranaki Street, Te Aro<br>Wellington 6011, New Zealand</p>
+        </div>
+        <div class="info-blk">
+          <span class="info-lbl">Phone</span>
+          <p><a href="tel:+642102337575">+64 210 233 7575</a></p>
+        </div>
+        <div class="info-blk">
+          <span class="info-lbl">Email</span>
+          <p><a href="mailto:lunabeautynailstudio@gmail.com">lunabeautynailstudio@gmail.com</a></p>
+        </div>
+        <div class="info-blk">
+          <span class="info-lbl">Opening Hours</span>
+          <div class="hours-row"><span class="hours-day">Mon – Wed</span><span>9:00 am – 6:30 pm</span></div>
+          <div class="hours-row"><span class="hours-day">Thu – Fri</span><span>9:00 am – 7:30 pm</span></div>
+          <div class="hours-row"><span class="hours-day">Saturday</span><span>10:00 am – 6:00 pm</span></div>
+          <div class="hours-row"><span class="hours-day">Sunday</span><span>10:00 am – 6:00 pm</span></div>
+        </div>
+      </div>
+      <div>
+        <img class="info-card-img" src="https://i.imgur.com/nmVn9wI.png" alt="Luna Beauty contact info" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="loyalty-sect reveal">
+  <span class="eyebrow">Rewards</span>
+  <h2 class="display-h">Our <em>Loyalty</em> Programme</h2>
+  <div class="ornament-rule" style="justify-content:center"><div class="ornament-diamond"></div></div>
+  <p style="color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;max-width:400px;margin:0 auto;line-height:1.8">Collect stamps with every visit — 5 stamps earns $5 off, 9 stamps earns $10 off.</p>
+  <div class="loyalty-card-wrap">
+    <img src="https://i.imgur.com/nmVn9wI.png" alt="Luna Beauty loyalty card" loading="lazy"/>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="https://i.imgur.com/ggjaMrP.png" alt="Luna Beauty"/>
+      <span class="footer-logo-text">Luna Beauty Nail Studio</span>
+    </div>
+    <div class="footer-links">
+      <a href="tel:+642102337575">+64 210 233 7575</a>
+      <a href="mailto:lunabeautynailstudio@gmail.com">Email</a>
+      <a href="https://maps.google.com/?q=62A+97+Taranaki+Street+Wellington" target="_blank" rel="noopener">Taranaki St</a>
+      <a href="https://www.fresha.com/zh/a/luna-beauty-nail-stidio-wellington-62-a-97-taranaki-street-etnc9rm0/all-offer?menu=true&share=true&pId=2815167" target="_blank" rel="noopener">Book Now</a>
+    </div>
+    <span class="footer-copy">© 2025 Luna Beauty Nail Studio · Wellington</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('main-nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function openLightbox(src,caption){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-caption').textContent=caption;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+function animateCounter(el){
+  const target=parseFloat(el.dataset.target);
+  const decimal=target%1!==0;
+  const dur=1200,start=performance.now();
+  (function tick(now){
+    const p=Math.min((now-start)/dur,1);
+    const e2=1-Math.pow(1-p,3);
+    el.textContent=decimal?(e2*target).toFixed(1):Math.round(e2*target);
+    if(p<1)requestAnimationFrame(tick);
+    else el.textContent=decimal?target.toFixed(1):target;
+  })(start);
+}
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('[data-target]').forEach(animateCounter)});
+},{threshold:0.3}).observe(document.querySelector('.about-stats'));
+
+let lastSparkle=0;
+document.addEventListener('mousemove',e=>{
+  const now=Date.now();
+  if(now-lastSparkle<90)return;
+  lastSparkle=now;
+  const s=document.createElement('div');
+  s.className='sparkle';
+  s.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;width:${Math.random()*5+3}px;height:${Math.random()*5+3}px`;
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),640);
+});
+</script>
+</body>
+</html>
